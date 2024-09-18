@@ -1,0 +1,264 @@
+global:
+    scrape_interval: 20s
+    external_labels:
+        monitor: 'prometheus-monitoring'
+rule_files:
+  - '/config/prometheus-rules.yml'
+scrape_configs:
+  - job_name: 'nginx-bipad-staging-exporter-159'
+    scrape_interval: 20s
+    static_configs:
+         - targets: ['159.89.164.123:8055']
+
+  - job_name: 'learn-naxa-node-exporter'
+    scrape_interval: 20s
+    static_configs:
+    - targets:
+      - 159.89.166.237:9100
+    metrics_path: "/metrics"
+
+  - job_name: 'cfp-cadvisor'
+    scrape_interval: 20s
+    static_configs:
+    - targets:
+      - commonfeedbackplatform.org
+    metrics_path: "/metrics"
+
+  - job_name: 'app.zite.io-cadvisor'
+    scrape_interval: 20s
+    static_configs:
+    - targets:
+      - zf.zite.io
+    metrics_path: "/metrics"
+
+  - job_name: 'node-exporter-159'
+    scrape_interval: 20s
+    static_configs:
+         - targets: ['node-exporter:9100']
+
+  - job_name: 'node-exporter-167'
+    scrape_interval: 20s
+    static_configs:
+        - targets: ['167.71.229.214:9100']
+    metrics_path: "/metrics"
+
+  - job_name: 'node-exporter-Changu-Datahub'
+    scrape_interval: 20s
+    static_configs:
+        - targets: ['changu-metric-stag.naxa.com.np']
+    metrics_path: "/metrics"
+
+  - job_name: 'node-exporter-Geodetic-Prod'
+    scrape_interval: 20s
+    static_configs:
+        - targets: ['202.45.146.139:9100']
+    metrics_path: "/metrics"
+
+  - job_name: 'node-exporter-ProjectBank-Prod'
+    scrape_interval: 20s
+    static_configs:
+        - targets: ['103.175.192.153:9100']
+    metrics_path: "/metrics"
+
+  - job_name: 'node-exporter-CIC-Prod'
+    scrape_interval: 20s
+    static_configs:
+        - targets: ['landslide.naxa.com.np']
+    metrics_path: "/metrics"
+
+  - job_name: 'node-exporter-HWCW-Prod'
+    scrape_interval: 20s
+    static_configs:
+        - targets: ['68.183.89.82:9100']
+    metrics_path: "/metrics"
+
+  - job_name: 'node-exporter-DVS'
+    scrape_interval: 20s
+    static_configs:
+        - targets: ['admin.dvs-nepal.org']
+    metrics_path: "/metrics"
+
+  - job_name: 'node-exporter-cyclecity'
+    scrape_interval: 20s
+    static_configs:
+        - targets: ['greenwayapi.cyclecity.org.np']
+    metrics_path: "/nodeexporter/metrics"
+
+  - job_name: 'node-exporter-nidn'
+    scrape_interval: 20s
+    static_configs:
+        - targets: ['innovationnepal.nast.gov.np']
+    metrics_path: "/node-exporter/metrics"
+
+  - job_name: 'node-exporter-CHANGU-PROD'
+    scrape_interval: 20s
+    static_configs:
+        - targets: ['changu-admin.naxa.com.np']
+    metrics_path: "/nodeexporter/metrics"
+
+  - job_name: 'node-exporter-PDRA-PROD'
+    scrape_interval: 20s
+    static_configs:
+        - targets: ['pdra.wvnepal.org']
+    metrics_path: "/nodeexporter/metrics"
+
+  - job_name: 'node-exporter-ZITE-PROD'
+    scrape_interval: 20s
+    static_configs:
+        - targets: ['app.zite.io']
+    metrics_path: "nodeexporter/metrics"
+
+  - job_name: 'node-exporter-ZITE-STAGING'
+    scrape_interval: 20s
+    static_configs:
+        - targets: ['zite.zite.io']
+    metrics_path: "nodeexporter/metrics"
+
+  - job_name: 'node-exporter-CFP-IOM-STAGING'
+    scrape_interval: 20s
+    static_configs:
+        - targets: ['iomkf.zite.io']
+    metrics_path: "nodeexporter/metrics"
+
+  - job_name: 'node-exporter-CFP-IOM-PROD'
+    scrape_interval: 20s
+    static_configs:
+        - targets: ['www.commonfeedbackplatform.org']
+    metrics_path: "/metrics"
+
+  - job_name: 'node-exporter-ZiteManager-PROD'
+    scrape_interval: 20s
+    static_configs:
+        - targets: ['app.zitemanager.org']
+    metrics_path: "/metrics"
+
+  - job_name: 'celery-exporter'
+    scrape_interval: 15s
+    static_configs:
+        - targets: ['ee.commonfeedbackplatform.org']
+    metrics_path: "celeryexporter/metrics"
+
+  - job_name: 'node-exporter-bhumi'
+    scrape_interval: 20s
+    static_configs:
+         - targets: ['202.45.147.55:9100']
+    metrics_path: "/metrics"
+#    basic_auth:
+#      username: 'bhuminode'
+#      password: 'qGxrvo9bDplCWhrziiXv'
+
+  - job_name: 'cadvisor'
+    scrape_interval: 20s
+    static_configs:
+      - targets: ['cadvisor:8080']
+
+  - job_name: 'blackbox-https'
+    metrics_path: /probe
+    scrape_interval: 20s
+    params:
+      module: [http_2xx]
+    # file_sd_configs:
+    #   - files:
+    #     - '/config/blackbox_http_targets.yml'
+    static_configs:
+      - targets:
+        - https://learn.naxa.com.np
+        - https://data.geonadir.com  # Target to probe with http.
+        - https://admin.dvs-nepal.org
+        - https://admin.dvs-nepal.org/api/v1/core/component/
+        - https://api.gocivi.com/admin/login/?next=/admin
+        - https://app.naxa.com.np
+        - https://innovationmapper.naxa.com.np/
+        - https://innovationnepal.nast.gov.np/api/v1/
+        - https://www.commonfeedbackplatform.org/
+        - https://ee.commonfeedbackplatform.org/
+        - https://kf.commonfeedbackplatform.org/
+        - https://app.zite.io/
+        - https://zee.zite.io/
+        - https://kf.zitemanager.org/
+        - https://innovationnepal.nast.gov.np/
+#        - https://rap.naxa.com.np
+        - https://jenkins.naxa.com.np/login?from=%2F
+        - https://pdra.wvnepal.org
+        - https://ee.wvnepal.org
+        - https://kf.wvnepal.org
+        - https://naxa.com.np
+        - https://admin.naxa.com.np
+        - https://admin.dvs-nepal.org
+        - https://dvtadmin.sakchyam.com.np
+#        - https://bgi.utilitymaps.org/api/
+        - https://geodetic.naxa.com.np/user/login/
+        - https://pack-kiosk.naxa.com.np/admin/login/?next=/admin/
+#        - https://forms.nlc.gov.np/ez420gg77eekckf/login/?next=/ez420gg77eekckf/
+#        - https://wms.geonadir.com/geoserver/web/
+        - https://route.naxa.com.np/maps/
+        - https://greenwayapi.cyclecity.org.np/admin/login/?next=/admin/
+        - https://hydro.naxa.com.np/admin/
+#        - https://landslide.naxa.com.np/login
+ #       - https://landslidekf.naxa.com.np/admin/login/
+ #       - https://landslideee.naxa.com.np
+        - https://assessment.naxa.com.np/login
+        - https://assessmentkf.naxa.com.np/admin/login/
+        - https://assessmentee.naxa.com.np
+        - https://app.mhranp.org/login
+        - https://kf.mhranp.org/admin/login/
+        - https://ee.mhranp.org
+        - https://bipad.naxa.com.np/api/
+#        - https://naxacon.com/admin/
+        - https://weblate.naxa.com.np
+#        - https://changuportal.naxa.com.np/admin/
+#        - https://changuportal.naxa.com.np/
+#        - https://naxamapper.com/api/admin/login/
+        - https://raster.naxa.com.np/test
+        - https://victoryapi.citizensciencenepal.com/admin/login/?next=/admin/
+#        - https://nepalwastemap.org/
+#        - https://projects.karnali.gov.np
+#        - https://exposure.ndrrma.gov.np/api/v1/get_survey_districts/
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox_exporter:9115
+
+  - job_name: 'nginx-exporter-bhumi'
+    scrape_interval: 20s
+    static_configs:
+         - targets: ['nginx_exporter_bhumi:9113']
+    metrics_path: /metrics
+
+#  - job_name: 'file_size_exporter_139'
+#    static_configs:
+#         - targets: ['file_size_exporter:8000']
+#    metrics_path: /metrics
+#    scrape_interval: 60m
+#    scrape_timeout: 10m
+
+  - job_name: 'domain-exporter'
+    metrics_path: /probe
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - target_label: __address__
+        replacement: domain_exporter:9222
+    static_configs:
+      - targets:
+        - anticipatoryaction.org
+        - citizensciencenepal.com
+        - dmaps.org
+        - dronetm.net
+        - dronetm.org
+        - geovationnepal.com
+        - lunchbox.com.np
+        - mhranp.org
+        - naxa.com.np
+        - safanepal.org
+        - usafiri.io
+        - zite.io
+
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      - 'alertmanager:9093'
