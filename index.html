@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mind Reader</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="prompt-box">
+        <h1>🧠 Mind Reader 🧠</h1>
+        <p>Think of a number between <strong>1 and 10</strong></p>
+        
+        <div id="form">
+            <input type="number" id="user-number" min="1" max="10" placeholder="Enter your number">
+            <button onclick="readMind()">🔮 Read my Mind</button>
+        </div>
+
+        <div id="loading" style="display: none;">
+            <p id="loading-message"></p>
+        </div>
+
+        <div id="result" style="display: none;">
+            <h2>Your Number is: <span id="revealed-number"></span> 🎉</h2>
+            <button onclick="resetApp()">🔁 Try Again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
