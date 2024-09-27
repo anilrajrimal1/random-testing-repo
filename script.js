@@ -5,22 +5,26 @@ function readMind() {
         alert("Please enter a number between 1 and 10");
         return;
     }
+
+    // Hide the form and show loading
     document.getElementById("form").style.display = "none";
     document.getElementById("loading").style.display = "block";
 
     let messages = [
-        "Analyzing brainwaves...",
-        "Scanning memories...",
-        "Interpreting data...",
-        "Connecting with the cosmos...",
-        "Decoding psychic signals..."
+        "Analyzing brainwaves................",
+        "Scanning memories...................",
+        "Interpreting data....................",
+        "Connecting with the cosmos.............",
+        "Decoding psychic signals................"
     ];
 
     let index = 0;
+    let animatedText = document.getElementById("animated-text");
 
     let loadingInterval = setInterval(() => {
         if (index < messages.length) {
-            document.getElementById("loading-message").textContent = messages[index];
+            // Update animated text
+            animatedText.textContent = messages[index];
             index++;
         } else {
             clearInterval(loadingInterval);
@@ -29,7 +33,7 @@ function readMind() {
             document.getElementById("result").style.display = "block";
             document.getElementById("revealed-number").textContent = number;
         }
-    }, 2000);
+    }, 3000);
 }
 
 function resetApp() {
