@@ -1,6 +1,7 @@
 # random-testing-repo
-This is just a random testing repo
-Nothing here !!!!
+
+A repository for testing random code, scripts, and configurations.
+
 
 PUSH ANYTHING !!!!
-JUST FUN !!1
+JUST FUN !!
