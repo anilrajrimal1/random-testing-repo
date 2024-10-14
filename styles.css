@@ -41,7 +41,7 @@ button {
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #14b117;
 }
 
 #loading-message {
@@ -69,5 +69,5 @@ button:hover {
     overflow: hidden;
     font-size: 20px;
     width: 100%;
-    animation: typing 3.5s steps(40, end) infinite;
+    animation: typing 4s steps(40, end) infinite;
 }
